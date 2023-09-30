@@ -158,35 +158,23 @@ issues and help farmers to increase their productivity and reduce food waste.
 </ul>
 
 <h4>Instructions</h4>
-<ul>
-    <li>
-        Clone the repository and navigate to the project directory
-        <pre>
-            <code>
-                git clone https://github.com/arghyagod-coder/ArogyaKheti-Hack4Earth2023.git
-                cd ArogyaKheti-Hack4Earth2023
-            </code>
-        </pre>
-    </li>
-    <li>
-        Make sure you have [Python](https://www.python.org/downloads/) installed. Install the dependencies.
-        <pre>
-            <code>
-                pip install -r requirements.txt
-            </code>
-        </pre>
-    </li>
-    <li>
-        Run the following commands to create the database and run the server
-        <pre>
-            <code>
-                python manage.py makemigrations
-                python manage.py migrate
-                python manage.py runserver
-            </code>
-        </pre>
-    </li>
-</ul>
+
+- Clone the repository and navigate to the project directory
+
+```
+git clone https://github.com/arghyagod-coder/ArogyaKheti-Hack4Earth2023.git
+cd ArogyaKheti-Hack4Earth2023
+```
+- Make sure you have [Python](https://www.python.org/downloads/) installed. Install the dependencies.
+```
+pip install -r requirements.txt
+```
+- Run the following commands to create the database and run the server
+```
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+```
 
 <h2 align="center">License</h2>
 
