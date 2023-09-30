@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}ArogyaKheti{% endblock %}
+{% block content %}
+            <!-- Call to action section-->
+            <section class="py-5 bg-gradient-primary-to-secondary text-white">
+                <div class="container px-5 my-5">
+                    <div class="text-center">
+                        <h2 class="display-4 fw-bolder mb-4">Your FIDC Number was generated successfully!!</h2>
+                        <p class="lead fw-normal text-white mb-5">Your FIDC Card Number is <strong id="fidcNo">{{ fidc }}</strong>. <a class="text-white" href="javascript:void(0);" onclick="CopyFIDC()">Copy it.</a></p>
+                        <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" href="../login/">Proceed to Login Page</a>
+                    </div>
+                </div>
+            </section>
+{% endblock %}
+{% block scripts %}
+<script>
+    const text = document.getElementById('fidcNo').innerText;
+  const CopyFIDC = async () => {
+    try {
+      await navigator.clipboard.writeText(text);
+      console.log('Content copied to clipboard');
+    } catch (err) {
+      console.error('Failed to copy: ', err);
+    }
+  }
+</script>
+{% endblock scripts %}

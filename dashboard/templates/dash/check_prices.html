@@ -1,0 +1,74 @@
+{% extends 'dash/base.html' %}
+{% load static %}
+{% block id %}{{ userid }}{% endblock %}
+{% block title %}Stay Updated with Market Crop Prices{% endblock %}
+{% block content %}
+
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Crop Prices for <strong> {{ date.date }}</strong></h1>
+<p class="mb-4">Stay ahead in the agricultural market with our real-time commodity price checker. Whether you're a
+    farmer, trader, or simply curious about current market trends, our platform provides instant access to
+    up-to-the-minute prices for a wide range of agricultural commodities. From grains and vegetables to livestock and
+    specialty crops, we've got you covered. Make informed decisions, track price fluctuations, and seize opportunities
+    with confidence. Explore the dynamic world of agricultural markets and keep your finger on the pulse of the industry
+    right here...</p>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Latest Market Price Updates</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Commodity</th>
+                        <th>Variety</th>
+                        <th>State</th>
+                        <th>Market</th>
+                        <th>Min. Price</th>
+                        <th>Max. Price</th>
+                        <th>Modal. Price</th>
+                        <th>Unit</th>
+                        <th>Arrival</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Commodity</th>
+                        <th>Variety</th>
+                        <th>State</th>
+                        <th>Market</th>
+                        <th>Min. Price</th>
+                        <th>Max. Price</th>
+                        <th>Modal Price</th>
+                        <th>Unit</th>
+                        <th>Arrival</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {% for item in prices %}
+                    <tr>
+                        <td>{{ item.commodity }}</td>
+                        <td>{{ item.variety }}</td>
+                        <td>{{ item.state }}</td>
+                        <td>{{ item.market }}</td>
+                        <td>{{ item.min_price }}</td>
+                        <td>{{ item.max_price }}</td>
+                        <td>{{ item.modal_price }}</td>
+                        <td>Rs./quintal</td>
+                        <td>{{ item.arrival_date }}</td>
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</div>
+<!-- /.container-fluid -->
+
+{% endblock %}

@@ -1,0 +1,139 @@
+{% extends 'dash/base.html' %}
+{% load static %}
+{% block title %}ArogyaKheti{% endblock %}
+{% block content %}
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+</div>
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h4 mb-0 text-gray-800">Hello {{ user.name }}</h1>
+</div>
+
+<div class="row">
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Weather</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ weather|index:0 }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Temperature</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ weather|index:1 }} C &deg;</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                            Atmospheric Pressure</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ weather|index:4 }} C &deg;</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-clouds fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            Public Listings</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ public_produces_count }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-list fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Content Row -->
+
+<div class="row">
+
+    <div class="col-xl-8 col-lg-7">
+        <div class="card shadow ">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Market Overview</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <h5><strong>Current Market Listings: </strong> {{ produces_count }}</h5>
+                {% if produces_count != 0 %}
+                <h5><strong>Most Recent Listing: </strong></h5>
+                <h6><strong>Commodity: </strong>{{ last_listing.name }}</h6>
+                <h6><strong>Quantity: </strong>{{ last_listing.quantity }}</h6>
+                <h6><strong>Price: </strong>{{ last_listing.price }}</h6>
+                <h6><strong>Listed on: </strong>{{ last_listing.created_at }}</h6>
+                {% else %}
+                <h6>No Listings Yet! <a href="/admin/list_product/">Create One.</a></h6>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-4 col-lg-5">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Recent Agro-related News </h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                {% for article in news %}
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Accordion -->
+                    <a href="{{ article.url }}" class="d-block card-header py-3" data-toggle="collapse" role="button">
+                        <h6 href="{{ article.url }}" class="m-0 font-weight-bold text-primary">{{ article.title }} </h6>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+{% endblock %}
+{% block scripts %}
+{% endblock scripts %}

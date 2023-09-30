@@ -1,0 +1,76 @@
+{% extends 'pub_base.html' %}
+{% load static %}
+{% block title %}Crop Recommendation System{% endblock %}
+{% block id %}{{ userid }}{% endblock %}
+{% block brief %}Market Listings{% endblock %}
+{% block content %}
+<section class="py-5">
+    <div class="container px-5">
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Explore Fresh Farmer Produce</h1>
+        <p class="mb-4">
+            Welcome to our marketplace where you can discover an array of fresh, locally grown produce straight from the
+            fields of dedicated farmers in your community. Our platform connects you with a diverse selection of fruits,
+            vegetables, dairy, and more. Each listing provides you with essential details, including product
+            details, prices, and quantities available. Whether you're a restaurant owner, a home cook, or simply
+            someone who values farm-fresh goodness, you'll find a wealth of options to choose from. By supporting local
+            farmers through your purchases, you're not only ensuring the freshest ingredients for your table but also
+            contributing to the sustainability and growth of agriculture in your region. Happy browsing, and enjoy the
+            flavors of farm-to-table goodness!
+        </p>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Commodity</th>
+                                <th>Seller</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Location</th>
+                                <th>State</th>
+                                <th>Contact</th>
+                            </tr>
+                        </thead>
+                        <!-- <tfoot>
+                                                <tr>
+                                                    <th>Commodity</th>
+                                                    <th>Seller</th>
+                                                    <th>Quantity</th>
+                                                    <th>Price</th>
+                                                    <th>Location</th>
+                                                    <th>State</th>
+                                                </tr>
+                                            </tfoot> -->
+                        <tbody>
+                            {% for produce in products %}
+                            <tr>
+                                <td>{{ produce.name }}</td>
+                                <td>{{ produce.user.name }}</td>
+                                <td>{{ produce.quantity }} {{produce.unit}}</td>
+                                <td>{{ produce.price }} Rs/{{ produce.unit }}</td>
+                                <td><a
+                                        href="https://maps.google.com/maps?z=12&t=m&q=loc:{{ produce.user.coords|index:0 }}+{{produce.user.coords|index:1}}"><i
+                                            class="bi bi-geo-alt-fill"></i></a></td>
+                                <td>{{ produce.user.addressinfo|index:1 }}, {{ produce.user.addressinfo|index:2 }}</td>
+                                <td>{{ produce.user.phone }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container-fluid -->
+
+    </div>
+</section>
+{% endblock %}

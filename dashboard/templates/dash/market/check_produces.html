@@ -1,0 +1,29 @@
+{% extends 'dash/base.html' %}
+{% load static %}
+{% block title %}Check My Listings{% endblock %}
+{% block id %}{{ userid }}{% endblock %}
+{%block content %}
+<div class="align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Your Listings</h1>
+  <br>
+  <p>
+    Welcome to your personal produce listings page. Here you can access all your listings in the <a
+      href="/public/">Public Portal</a>. Publish listings <a href="/admin/list_product">here.</a>
+  </p>
+</div>
+
+{% for product in produces %} {% if product.farmerid == user.id %}
+<div class="card shadow mb-4">
+  <div class="card-body">
+    <h6><strong>Commodity:</strong> {{ product.name }}</h6>
+    <h6><strong>Quantity:</strong> {{ product.quantity }} {{product.unit}}</h6>
+    <h6><strong>Price:</strong> {{ product.price }} Rs/{{ product.unit }}</h6>
+    <h6><strong>Listed On:</strong> {{ product.created_at }}</h6>
+
+    <div class="d-grid mt-4 md-3">
+      <a href="/admin/delete_listing/{{ product.id }}/" class="btn btn-outline-primary opacity-65 btn-sm">Delete</a>
+    </div>
+  </div>
+</div>
+
+{% endif %} {% endfor %} {% endblock %}

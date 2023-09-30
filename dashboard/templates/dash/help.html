@@ -1,0 +1,56 @@
+{% extends 'dash/base.html' %}
+{% load static %}
+{% block id %}{{ userid }}{% endblock %}
+{% block title %}Chat-enabled Support{% endblock %}
+{% block content %}
+<!-- Page Heading -->
+<div class="align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Support</h1>
+  <br />
+  <p class="p">
+    Meet our friendly chatbot designed exclusively for farmers. Whether you're
+    seeking real-time market updates, crop care tips, or need assistance with
+    our platform, our chatbot is here to help 24/7. Just type your questions,
+    and it'll provide instant answers and guidance. Farming made easier, one
+    chat at a time.
+  </p>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Chat</h6>
+      </div>
+      <div class="card-body ">
+        <div class="overflow-auto mw-[100px] scroll">
+          {% for i in log.queries|length|get_range %}
+          <div class="card fs-1 mb-2">
+            <div class="card-header">
+              <strong>You asked: {{ log.queries|index:i }}</strong>
+            </div>
+            <div class="card-body">
+              {{ log.responses|index:i }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+
+      </div>
+    </div>
+
+    <form method="POST" class="col-lg-12 d-inline-flex" id="contactForm">
+      {% csrf_token %}
+      {% for field in form %}
+      <div class="navbar bg-white navbar-expand-sm d-flex justify-content-between form-floating w-80 mb-3">
+        {{ field }}
+      </div>
+      {% endfor %}
+      <div class="d-grid ml-md-3">
+        <button class="btn btn-primary opacity-65 btn-md" id="submitButton" value="submit" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

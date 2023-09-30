@@ -1,0 +1,21 @@
+{% extends 'dash/404base.html' %}
+{% load static %}
+{% block title %}404 Error- ArogyaKheti{% endblock %}
+{% block content %}
+<div class="text-center justify-content-center">
+    <div class="mt-6 error mx-auto" data-text="404">404</div>
+    <p class="lead text-gray-800 mb-5">Page Not Found</p>
+    {% if errormsg %}
+    <p class="text-gray-500 mb-0">{{ errormsg }}</p>
+    {% else %}
+    <p class="text-gray-500 mb-0">Not sure why.</p>
+    {% endif %}
+    {% if errormsg == "Invalid Credentials" %}
+    <a href="/">&larr; Back to Home</a>
+    {% else %}
+    <a href="/admin/">&larr; Back to Home</a>
+    {% endif %}
+</div>
+</div>
+<!-- /.container-fluid -->
+{% endblock %}

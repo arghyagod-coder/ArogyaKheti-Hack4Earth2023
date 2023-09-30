@@ -1,0 +1,69 @@
+{% extends 'dash/base.html' %}
+{% load static %}
+{% block title %}Crop Recommendation System{% endblock %}
+{% block id %}{{ userid }}{% endblock %}
+{% block content %}
+<div class=" align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Crop Recommendation System</h1>
+    <br>
+    {% if prediction %}
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Results</h4>
+        <p class="p">ArogyaKheti recommends you to harvest <strong>{{ prediction }}</strong> on your field at this time
+            of the year.</p>
+        {% else %}
+        <p class="p">
+            At <strong>ArogyaKheti</strong>, we understand that the path to agricultural prosperity begins with informed
+            decisions. Our Crop Recommendation System is a groundbreaking feature designed to empower farmers with the
+            knowledge and tools needed to optimize their crop yields and make their farming endeavors more sustainable.
+            <br><br>
+
+            <strong>Precision Agriculture for Informed Choices:</strong>
+            <br><br>
+            Our Crop Recommendation System is built on the foundation of precision agriculture, recognizing that no two
+            farms are alike, and each plot of land has its unique characteristics. To offer tailor-made guidance, we
+            rely on one crucial element: your soil.
+            <br><br>
+            <strong>Soil Health as the Cornerstone:</strong>
+            <br><br>
+            We firmly believe that understanding your soil's health is the first step towards a bountiful harvest. Soil
+            tests provide invaluable insights into nutrient levels, pH balance, and soil texture, guiding you on the
+            most effective way to nurture your crops. If you haven't conducted a soil test yet, don't worry; we're here
+            to guide you through the process.
+            <br><br>
+            <strong>How to Get Your Soil Test Done:</strong>
+
+        <ol>
+            <li>
+                <strong>Sample Collection:</strong> Collect soil samples from various parts of your field, following our
+                guidelines. Composite samples represent your entire plot accurately.
+            </li>
+            <li> <strong>Submit Your Samples:</strong> Reach out to your nearest agricultural department, agricultural
+                university, Krishi Vigyan Kendra (KVK), or a reputable private soil testing laboratory. They will guide
+                you on the submission process.
+            </li>
+            <li>
+                <strong>Analysis and Report:</strong> Once your soil samples are analyzed, you will receive a
+                comprehensive soil test report. This report is the key to unlocking the full potential of your land.
+            </li>
+        </ol>
+        </p>
+        {% endif %}
+    </div>
+
+
+    <div class="container rounded toolform align-items-center justify-content-center mt-5">
+        <form method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-floating mb-3">
+                <label for="{{field.label}}">{{ field.label }}</label>
+                {{ field }}
+            </div>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    {% endblock %}

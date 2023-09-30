@@ -1,0 +1,49 @@
+{% extends 'dash/base.html' %}
+{% load static %}
+{% block id %}{{ userid }}{% endblock %}
+{% block title %}ArogyaKheti{% endblock %}
+{% block content %}
+<!-- Page Heading -->
+<div class="align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">News Headlines</h1>
+    <br>
+    <p class="p">At <strong>ArogyaKheti</strong>, we understand that farming is not just a job; it's a way of life.
+        We're here to provide you with the latest updates, insights, and tips to help you succeed in your farming
+        journey. Whether you're a seasoned farmer or just starting out, our news page is your go-to source for staying
+        informed about the ever-evolving world of agriculture.</p>
+</div>
+
+<div class="align-items-center justify-content-between mb-4">
+    <h2 class="h5 mb-0 text-gray-800"><strong>Latest News</strong></h2>
+</div>
+
+
+<div class="row">
+
+    <div class="col-lg-12">
+
+        {% for article in news %}
+        <div class="card shadow mb-4">
+            <!-- Card Header - Accordion -->
+            <a href="#collapseCardExample" class="d-block card-header py-3" data-toggle="collapse" role="button"
+                aria-expanded="true" href="{{ article.url }}" aria-controls="collapseCardExample">
+                <h5 class="m-0 font-weight-bold text-primary">{{ article.title }} </h5>
+
+            </a>
+            <!-- Card Content - Collapse -->
+            <div class="collapse show" id="collapseCardExample">
+                <div class="fs-1 card-body">
+                    {{ article.description }}
+                    <br><br>
+                    <span><a href="{{ article.url }}">Read More...</a></span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+</div>
+<!-- /.container-fluid -->
+{% endblock %}

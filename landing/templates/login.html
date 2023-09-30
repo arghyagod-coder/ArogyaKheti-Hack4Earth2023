@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Login to ArogyaKheti{% endblock %}
+{% block content %}
+            <section class="py-5">
+                <div class="container px-5">
+                    <!-- Contact form-->
+                    <div class="bg-light rounded-4 py-5 px-4 px-md-5">
+                        <div class="text-center mb-5">
+                            <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-5"><i class="bi bi-box-arrow-in-right"></i></div>
+                            <h1 class="fw-bolder">Log in to your ArogyaKheti Dashboard</h1>
+                            <p class="lead fw-normal text-muted mb-0">Farmer Identity Card (FIDC) is a card issued to farmers of India to register themselves to the platform.</p>
+                        </div>
+                        <div class="row gx-5 justify-content-center">
+                            <div class="col-lg-8 col-xl-6">
+                                <form id="contactForm" method="post">
+                                    {% csrf_token %}
+                                    {% for field in form %}
+                                    <div class="form-floating mb-3">
+                                            <!-- <label class="mylabel">{{ field.label }}</label> -->
+                                            {{ field }}
+                                        <label for="{{field.label}}">{{ field.label }}</label>
+                                        </div>
+                                    {% endfor %}
+                                    <!-- <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div> -->
+                                    <!-- Submit Button-->
+                                    <div class="d-grid"><button class="btn btn-primary btn-lg " id="submitButton" type="submit">Submit</button></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+{% endblock %}
+

@@ -1,0 +1,43 @@
+{% extends 'dash/base.html' %}
+{% load static %}
+{% block title %}Make a Listing{% endblock %}
+{% block id %}{{ userid }}{% endblock %}
+{% block content %}
+<div class=" align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">List your Produce on Public Portal</h1>
+    <br>
+    {% if success %}
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Results</h4>
+        <p class="p"><strong>{{ success }}</strong></p>
+        {% else %}
+        <p class="p">
+            <a href="/admin/public/">The public portal</a> is a place where farmers like you can reach a wider
+            audience on reasonable prices by listing down your produce-related information publicly. Here, you have the
+            opportunity
+            to present your nurtured crops, livestock, and
+            agricultural products to potential buyers and enthusiasts. Create your listings with care, offering proper
+            names, pricing, and the quantities available. Your contributions are vital to our agricultural
+            community, and by listing your produce here, you're opening the door to connections with consumers who value
+            and
+            support local agriculture. Share your harvest with the world and reap the rewards of your hard work.
+        </p>
+        {% endif %}
+    </div>
+
+
+    <div class="container rounded toolform align-items-center justify-content-center mt-5">
+        <form method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-floating mb-3">
+                <label for="{{field.label}}">{{ field.label }}</label>
+                {{ field }}
+            </div>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    {% endblock %}
