@@ -31,8 +31,8 @@
     technology and a deep understanding of the agricultural ecosystem. Our platform harnesses the power of data
     analytics, providing farmers with valuable insights into crop management, communication, and market trends. Our
     mission is to empower farmers with the tools and knowledge they need to thrive in a rapidly evolving agricultural
-    landscape, ultimately contributing to food security and the eradication of hunger, formally addressing the [UN
-    SDG](https://sdgs.un.org/goals)- <strong>Zero Hunger</strong>.
+    landscape, ultimately contributing to food security and the eradication of hunger, formally addressing the <a href="https://sdgs.un.org/goals">UN SDG</a>
+     - <strong>Zero Hunger</strong>.
 </p>
 <p align="center">
 <h3 align="center">An Insight to the SDG - Zero Hunger:</h3>
@@ -150,6 +150,23 @@ issues and help farmers to increase their productivity and reduce food waste.
     </li>
 </ul>
 
+<h2 align="center">Backend</h2>
+
+### Datasets
+- [Crop Recommendation](https://www.kaggle.com/atharvaingle/crop-recommendation-dataset)
+- [Fertilizer Recommendation](https://www.kaggle.com/datasets/gdabhishek/fertilizer-prediction)
+- [Crop Prices](https://data.gov.in/resource/current-daily-price-various-commodities-various-markets-mandi)
+
+### Machine Learning Model Notebooks
+- [Crop Recommendation](./model_code/Crop_Recommendation_Model.ipynb)
+- [Fertilizer Recommendation](./model_code/Fertilizer_Predict.ipynb)
+
+### APIs
+- [News API](https://newsapi.org/)
+- [Crop Prices API](https://data.gov.in/resources/current-daily-price-various-commodities-various-markets-mandi)
+- [Google PaLM API](https://developers.generativeai.google/api/python/google/generativeai/chat)
+- [OpenWeather](https://openweathermap.org/api)
+
 <h2 align="center">Build Instructions</h2>
 
 <h4>Pre-Requisites</h4>
@@ -174,6 +191,67 @@ pip install -r requirements.txt
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
+```
+
+<h2 align='center'>Project Structure</h2>
+
+The Django Project contains three apps-
+- **Landing-** Contains the landing page, login and register systems
+- **Dashboard-** Contains the admin panel, and majority of the app's features
+- **Public-** Contains the public portal
+
+```
+.
+├── ArogyaKheti                                         # ArogyaKheti Django App Configuration
+│   └── __pycache__
+├── dashboard                                           # App Dashboard 
+│   ├── migrations                                      # Migrations for the Dashboard App
+│   ├── templates                                       # Templates for Dashboard
+│   │   └── dash
+│   │       ├── 404base.html                            # Base Template for 404 Error Page
+│   │       ├── 404.html                                # 404 Error Page
+│   │       ├── base.html                               # Admin Panel Base Template
+│   │       ├── check_prices.html                       # Check Market Prices Page
+│   │       ├── forum.html                              # Forum Page
+│   │       ├── help.html                               # Help Page
+│   │       ├── home.html                               # Dashboard Page
+│   │       ├── market
+│   │       │   ├── check_produces.html                 # Show my Listings Page             
+│   │       │   ├── list_produce.html                   # Make a Listing Page
+│   │       │   └── market_produce.html                 # Public Portal Page
+│   │       ├── news.html                               # News Page
+│   │       ├── profile.html                            # Profile Page
+│   │       └── tools                                   
+│   │           ├── crop_rec.html                       # Crop Recommendation Page
+│   │           └── fert_rec.html                       # Fertilizer Recommendation Page
+├── datasets
+│   ├── Crop_recommendation.csv                         # Crop Recommendation Dataset
+│   └── Fertilizer Prediction.csv                       # Fertilizer Recommendation Dataset
+├── landing 
+│   ├── migrations
+│   ├── templates                                       # Templates for Landing App
+│   │   ├── base.html                                   # Base Template for Landing App
+│   │   ├── index.html                                  # Landing Page
+│   │   ├── login.html                                  # Login Page
+│   │   ├── login_success.html                          # Login Success Page
+│   │   ├── navbar.html                                 # Navbar Template       
+│   │   ├── pub_base.html                               # Base Template for Public Portal
+│   │   └── register.html                               # Register Page
+├── model_code
+│   ├── Crop_Recommendation_Model.ipynb                 # Crop Recommendation Notebook
+│   ├── CropRecommend.pkl                               # Crop Recommendation Model
+│   ├── DecisionTree.pkl                                # Crop Recommendation DecisionTree
+│   ├── Fertilizer.pkl                                  # Fertilizer Recommendation Model
+│   ├── Fertilizer_Predict.ipynb                        # Fertilizer Recommendation Notebook
+│   ├── MinMax.pkl                                      # Crop Recommendation MinMaxScaler
+│   ├── NBClassifier.pkl                                # Crop Recommendation Naive Bayes Classifier
+│   ├── RandomForest.pkl                                # Crop Recommendation RandomForest
+│   └── SVMClassifier.pkl                               # Crop Recommendation SVM Classifier
+├── public                                              # App Public
+│   ├── migrations
+└── static                                              # Static Files
+    ├── admin                                           # Dashboard App Static Files
+    └── landing                                         # Landing App Static Files
 ```
 
 <h2 align="center">License</h2>

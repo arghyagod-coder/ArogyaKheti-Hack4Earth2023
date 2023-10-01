@@ -20,7 +20,7 @@
         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
           class="rounded-circle img-fluid" style="width: 150px;">
         <h5 class="my-3">{{ user.name }}</h5>
-        <p class="text-muted mb-1">Farmer at {{ user.addressinfo|index:1 }}, {{ user.addressinfo|index:2 }}</p>
+        <p class="text-muted mb-1">Farmer at {{ user.addressinfo|index:0 }}, {{ user.addressinfo|index:1 }}</p>
         <p class="text-muted mb-4">{{ user.bio }}</p>
         <div class="d-flex justify-content-center mb-2">
           <a href="/admin/logout/" type="button" class="btn mr-2 btn-primary">Log Out</a>

@@ -58,7 +58,7 @@
                                 <td><a
                                         href="https://maps.google.com/maps?z=12&t=m&q=loc:{{ produce.user.coords|index:0 }}+{{produce.user.coords|index:1}}"><i
                                             class="bi bi-geo-alt-fill"></i></a></td>
-                                <td>{{ produce.user.addressinfo|index:1 }}, {{ produce.user.addressinfo|index:2 }}</td>
+                                <td>{{ produce.user.addressinfo|index:0 }}, {{ produce.user.addressinfo|index:1 }}</td>
                                 <td>{{ produce.user.phone }}</td>
                             </tr>
                             {% endfor %}

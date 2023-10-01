@@ -19,9 +19,8 @@ class User(models.Model):
 
     @property 
     def addressinfo(self):
-        district, state, country = GetAddressDetails(self.pincode)
-        district = district.replace(" District", "")
-        return [district, state, country]
+        state, country = GetAddressDetails(self.pincode)
+        return [state, country]
 
     @property 
     def coords(self):

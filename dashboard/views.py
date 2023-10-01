@@ -192,7 +192,11 @@ def help_page(request):
         if request.method == 'POST':
             form = UserInputForm(request.POST)
             if form.is_valid():
-                del request.session['chatlog']
+                try:
+                    existinglog = request.session["chatlog"]
+                    del request.session['chatlog']
+                except:
+                    pass
 
                 query = form.cleaned_data['userinput']
                 res = GetResponse(query)
@@ -225,7 +229,8 @@ def help_page(request):
             }
 
         return render(request, 'dash/help.html', context)
-    except:
+    except Exception as e:
+        print(e)
         request.session["error_message"] = "Please Login to Continue"
         return redirect((f'/admin/404/'))
 

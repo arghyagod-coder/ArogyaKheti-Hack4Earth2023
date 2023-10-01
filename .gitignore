@@ -1,2 +1,2 @@
 .env
-arogyakheti.sqlite3
+db.sqlite3
